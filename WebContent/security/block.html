@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>pos Himetal</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <script type="text/javascript" src="/js/common.js"></script>
+    <style type="text/css">
+        p {margin: 30px;}
+        .f1 {font-size: 20px; font-weight: bold;}
+        .f2 {font-size: 16px;}
+    </style>
+</head>
+<body style="background-color: #547ed4; font-size: 14px;">
+<div style="position: relative; width:100%; height:100%; color: white; text-align: center; ">
+    <div id="center-div" style="width:100%; text-align: center;">
+        <p class="f1">허가되지 않은 사용자는 접속할 수 없습니다.</p>
+        <p class="f2">pos Himetal</p>
+    </div>
+</div>
+<script type="text/javascript">
+    function centerPosition() {
+        var cd = $("#center-div").css('position', 'absolute');
+        var parent = cd.parent('div');
+        cd.css('top',  (parent.height() - cd.height()) / 2);
+        cd.css('left', (parent.width() - cd.width()) / 2);
+    }
+    $(function() {
+        centerPosition();
+        window.onresize = centerPosition;
+    });
+</script>
+</body>
+</html>

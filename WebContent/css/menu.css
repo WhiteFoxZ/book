@@ -1,0 +1,25 @@
+﻿A.t:link	 {font-family:돋움,verdana;  color:#3B3B3B; text-decoration:none;}
+A.t:visited	 {font-family:돋움,verdana;  color:#64AE4A;  text-decoration:none;}
+A.t:hover 	 {font-family:돋움,verdana;  color:#009711; text-decoration:underline;}
+
+body{font-size:13px}
+table{font-size:13px}
+.fo1{{font-size:12px}
+
+/// Input Tag Style
+
+.input1         {font-family:"돋움","Verdana"; font: 12px;width:130;margin-top:1px}
+.solid        	{font-family:"돋움","Verdana"; font:12px;color:#4A4A4A; border: 1x solid #999999;}
+.adf            {border-width:1px; background-color:#5b90bf; border-color:#404040;font:12px;color:white; text-align: left;}
+.adb            {border-width:1px; background-color:white; border-color:#404040;font:12px;text-align: left;}
+
+.adf1           {border-width:1px; background-color:#E9F3FE; border-color:#404040;font:12px;text-align: left; padding-left:2}
+.adb1            {border-width:1px; background-color:white; border-color:#404040;font:12px;text-align: left;padding-left:2}
+
+.adf2           {border-width:1px; background-color:#E9F3FE; border-color:#404040;font:12px;text-align: right; padding-right:2}
+.adb2            {border-width:1px; background-color:white; border-color:#404040;font:12px;text-align: right; padding-right:2}
+
+BODY {SCROLLBAR-FACE-COLOR: #AFC6EB; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #89AED3; SCROLLBAR-ARROW-COLOR:  #ffffff; SCROLLBAR-TRACK-COLOR: #FFFFFF; SCROLLBAR-DARKSHADOW-COLOR: #89AED3; }
+
+
+

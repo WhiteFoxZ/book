@@ -1,0 +1,11 @@
+sourceName=test
+defaultAutoCommit=false
+defaultReadOnly=false
+driverClassName=oracle.jdbc.OracleDriver
+maxActive=30
+maxIdle=10
+maxWait=10000
+username=BOOK_USER
+password=BOOK_USER
+url=jdbc:oracle:thin:BOOK_USER/BOOK_USER@(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))) (CONNECT_DATA = (SERVICE_NAME = XE   )))
+

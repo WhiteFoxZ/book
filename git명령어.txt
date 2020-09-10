@@ -1,0 +1,30 @@
+
+fmjj008@gmail.com kim0525486#
+
+
+git status 해서 한글파일며이 깨질때 ---> git config --global core.quotepath false
+
+git clone https://github.com/WhiteFoxZ/common.git
+
+git config --global user.email "fmjj008@gmail.com"
+
+git config --global user.name "FoxWhite"
+
+
+## add 한것을 취소할경우
+git restore --staged build
+
+git rm build/\*.*
+git rm -rf build
+
+## 파일 이라면 
+git rm --cached test.txt 
+
+## 전체파일 이라면 
+git rm --cached *.txt 
+
+## 폴더 라면 
+git rm --cached test/ -r
+
+git push - u origin master
+

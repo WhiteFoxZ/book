@@ -1,0 +1,924 @@
+﻿@charset "utf-8";
+
+/* ==================== CSS reset ========================*/
+* { margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%;}
+html { overflow-y: auto; }
+body {
+    background-color: #fff;
+    *word-break: break-all;
+    -ms-word-break: break-all;
+    margin: 0; padding: 0
+}
+body, input, button, textarea {
+    font-size: 12px;
+    line-height: 1.5em;
+    font-family: "굴림", Gulim, arial,sans-serif;
+    color: #383d41;
+}
+h1, h2, h3, h4, h5, h6 { font-size: 14px; text-align: left }
+img, fieldset, iframe { border: 0 none }
+li { list-style: none }
+
+a:link    { text-decoration: none; color: #0000cc;}
+a:visited { text-decoration: none; color: #99209b; }
+a:active  { text-decoration: none; color: #0000cc; }
+a:hover   { text-decoration: none; color: #0000ff; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 0;
+}
+td { vertical-align: middle; }
+select {
+    border: solid 1px #a4bed4;
+    padding: 1px 2px 1px 2px;
+}
+input[type=text], textarea {
+    border: solid 1px #a4bed4;
+    /*margin: 1px 0;*/
+}
+input[type=text] {
+    height: 17px;
+    line-height: 17px;
+}
+img { vertical-align: middle; }
+
+/* ========================================================*/
+/*  Header */
+/*  상단 posHimetal & 사용자 정보등 */
+/* ========================================================*/
+/* 감사 포털 */
+.hdbar_  {
+    display:inline-block;
+    width:100%;
+    height:68px;
+    background:url(../img/himetal_sub.jpg) repeat-x;
+}
+
+.hdbar {
+    height: 72px;
+    overflow-x: hidden;
+    font-size: 12px;
+    }
+    .hdbar .top-box {
+        background: transparent url("../img/sprite-x.png") no-repeat -100px 0;
+        position: absolute;
+        top: 0; right: 0;
+        height: 32px;
+        width: 335px;
+        padding-left: 3px;  /* background size */
+        }
+        .hdbar .top-box .bg {
+            background: #547eb8;
+            width: 100%;
+            height: 32px;
+            position: relative;
+        }
+        .hdbar .top-box table {
+            position: absolute;
+            width: 190px;
+            height: 18px;
+            top: 6px;
+            right: 0;
+            }
+            .hdbar .top-box td {
+                width: 50%;
+                font-size: 12px;
+                text-align: center;
+                vertical-align: middle;
+                color: white;
+                border: 0 none;
+                border-right:  1px solid #ccc;
+                line-height: 1;
+                }
+                .hdbar .top-box td a {
+                    display: inline-block;
+                    height: 18px;
+                    line-height: 18px;
+                    width: 80px;
+                }
+    .hdbar .top-user {
+        position: absolute;
+        top: 6px;
+        right: 190px;
+        width: 130px;
+        overflow: hidden;
+        text-align: center;
+        font-size: 11px;
+        color: white;
+        background: #406799 url("../img/sprite-x.png") repeat-x 0 -90px;
+        padding:  0 4px;
+        border: 1px solid #36598a;
+    }
+    .hdbar .top-box a:link {
+        color: white;
+        }
+    .hdbar .top-box a:visited {
+        color: white;
+        }
+    .hdbar .top-box a:hover {
+        color: orange;
+        }
+    .hdbar #logo-line {
+        height: 44px;
+        background: #436ba3 url("../img/sprite-x.png") repeat-x left -44px;
+        }
+        #infmrk {
+            height: 44px;
+            width: 80px;
+            text-indent: -1000px;
+            background: url("../img/sprite-x.png") no-repeat top left;
+            margin-left: 5px;
+            }
+    .hdbar #info-line td {
+        color: rgb(90,90,115);
+        background: rgb(232,233,241);
+        border-top: 1px solid rgb(129,147,185);
+        border-bottom: 1px solid rgb(176,186,208);
+        height: 25px;
+        }
+    .hdbar table {
+        width: 100%;
+        }
+        .hdbar td {
+            padding-left: .5em;
+            padding-right: .5em;
+            vertical-align: middle;
+            white-space: nowrap;
+            }
+
+.popup .hdbar {
+    height: auto;
+}
+.popup .hdbar .top-box {
+    height: 24px;
+    width: 195px;
+    background: transparent url("../img/sprite-x.png") no-repeat -100px -8px;
+}
+.popup .hdbar .top-box .bg {
+    height: 24px;
+}
+.popup .hdbar .top-box table {
+    width: 100%;
+    top: 2px;
+}
+.popup .hdbar #info-line .top-box table td {
+    background: transparent;
+    height: 14px;
+    border-top: 0 none;
+    border-left: 0 none;
+    border-bottom: 0 none;
+    padding: 0; margin: 0;
+}
+
+.popup .prgm {font-size: 12px; font-weight: normal;}
+
+#curtime {
+    display: block;
+    position: absolute;
+    top: 45px; right: 0;
+    width: 150px;
+    line-height: 15px;
+    padding: 4px 4px 4px 1px;
+    color: #666;
+}
+#curtime span.icon-clock {
+    width: 15px;
+    height: 15px;
+    background: transparent url("../img/sprite-x.png") no-repeat 0 -190px ;
+}
+#curtime span {
+    display: inline-block;
+    line-height: 15px;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+
+.hdtlt .link {
+    display: block;
+    position: absolute;
+    top: 47px;
+    right: 140px;
+    height: 25px;
+    line-height: 25px;
+}
+
+/* 라운드 박스 배경 */
+.btn_blue_m {
+    width: 70%;
+    height: 44px;
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    background: transparent url("../img/sprite.png") repeat-x -0px -140px ;
+    color: #ffffff;
+}
+
+.btn_blue_l {
+    width: 11px;
+    height: 44px;
+    float: right;
+    background: transparent url("../img/sprite.png") no-repeat -0px -90px ;
+}
+
+.btn_blue_mt {
+    width: 100%;
+    margin: 14px 0 0 0;
+}
+
+.btn_blue_r {
+    width: 11px;
+    height: 44px;
+    float: right;
+    background: transparent url("../img/sprite.png") no-repeat -13px -90px ;
+}
+
+/* ========================================================*/
+/*  로딩중, 메시징. 상단 header 영역에. */
+/* ========================================================*/
+#indicator-loading {
+    position: absolute;
+    top:-1px; left:48%;
+    background-color: yellow;
+    display: none;
+}
+#indicator-loading .r-inner {
+    background-color: yellow;
+    padding:  0.25em 1em;
+}
+
+/* ========================================================*/
+/*  Workspace */
+/*  작업 영역  */
+/* ========================================================*/
+.workspace {
+    display: block;
+    width: 1180px;
+    /*min-height: 650px;*/
+}
+/* table(width=100) div(grid,width=100) 일때 grid가 workspace 밖으로 나가는 문제때문에 */
+.workspace table.contents {width: 1180px; table-layout: fixed;}
+
+
+/* head title : 페이지 타이틀, 검색조건, Action Buttons
+----------------------------------------------------*/
+.hdtlt {
+    background: url(../img/sprite.png) repeat-x 0 100%;
+    margin-bottom: 4px;
+    padding: 4px;
+    min-height: 25px;
+}
+
+div.hdtlt {margin-top: 5px;} 
+
+.hdtlt td {
+    padding: 4px;
+}
+
+.prgm {
+    float: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* hdtlt 링크에서 사용하는 라운드 박스
+-------------------------------------------------- */
+a.s_btn_ {
+    background: transparent url("../img/sprite-x.png") no-repeat right -110px;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 20px;
+    margin-right: 6px;
+    padding-right: 15px; /* sliding doors padding */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.s_btn_ span {
+    background: transparent url("../img/sprite-x.png") no-repeat 0 -150px;
+    display: block;
+    line-height: 14px;
+    padding: 3px 0 3px 15px;
+} 
+a.s_btn_:active {
+    background-position: right -130px;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.s_btn_:active span {
+    background-position: 0 -170px;
+    padding: 4px 0 2px 15px; /* push text down 1px */
+}
+
+/* .hdtlt내 : 검색조건
+-------------------------------------------------- */
+ul.srch {
+    float: left;
+    width: auto;
+}
+
+ul.srch li {
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+    margin-right: 8px;
+    padding-left: 7px;
+    font-weight: bold;
+    font-size: 12px;
+    height: 23px;
+    line-height: 23px;
+    background: url(../img/sprite.png) no-repeat -0px -436px; /* dot3.png */
+    overflow: hidden;
+}
+ul.srch li * {vertical-align: middle;}
+ul.srch li span {
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    position: relative;     /* 달력 위치계산위해 필요 */
+}
+
+/* 달력 위치계산위해 필요. table.info 내부 */
+span.calendar {position: relative; display: inline-block;}
+span.period {position: relative; display: inline-block;}
+
+span img {vertical-align: top; margin-top: 1px;}
+
+ul.srch li span input {
+    vertical-align: middle;
+    margin: 2px 2px 2px 0;
+}
+
+ul.srch li span img {
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 3px 0 3px 2px;
+}
+
+ul.srch li p {
+    display: inline;
+}
+
+/* .hdtlt내 : Action buttons
+-------------------------------------------------- */
+.func {
+    display: block;
+    float: right;
+    vertical-align: middle;
+    padding-right: 0.5em;
+    white-space: nowrap;
+}
+
+
+/* Action buttons : 버튼 모양 정의
+-------------------------------------------------- */
+.btn {
+    display: inline-block;
+    border-width: 0;
+    overflow: visible;
+    cursor: pointer;
+    font: 100%/1.2;
+    text-decoration: none;
+    color: #333;
+    background: #ddd url(../img/bg-button.gif) repeat-x 0 0;
+    border-color: #bbb;
+    border-style: solid;
+    border-width: 1px 0;
+    border-bottom-color: #aaa;
+    margin: 0 1px;
+}
+
+.btn span {
+    display: inline-block;
+    background: #ddd url(../img/bg-button.gif) repeat-x 0 0;
+    border-color: #bbb;
+    border-style: solid;
+    border-width: 0 1px;
+    border-left: 1px solid #bbb;
+    border-right:  1px solid #aaa;
+    margin: 0 -1px;
+    padding:  2px 4px;
+}
+.func .btn span span {
+    display: inline-block;
+    line-height: 16px;
+    overflow: visible;
+    text-indent: 2px;
+    white-space: nowrap;
+    border: 0 none;
+    padding: 0 0 0 16px;
+}
+.func .btn_disabled {
+    display: inline-block;
+    border-width: 0;
+    overflow: visible;
+    cursor: pointer;
+    font: 100%/1.2 Arial, Sans-serif;
+    text-decoration: none;
+    color: #333;
+    background: #ddd url(../img/bg-button.gif) repeat-x 0 0;
+    border-color: #bbb;
+    border-style: solid;
+    border-width: 1px 0;
+    border-bottom-color: #aaa;
+    margin: 0 1px;
+}
+
+.func .btn_disabled span {
+    display: block;
+    background: #ddd url(../img/bg-button.gif) repeat-x left bottom;
+    hieght: 22px;
+    border-color: #bbb;
+    border-left: 1px solid #bbb;
+    border-right:  1px solid #aaa;
+    border-style: solid;
+    border-width: 0 1px;
+    margin: 0 -1px;
+    padding:  2px 4px;
+}
+
+.func .btn_disabled span span {
+    display: block;
+    line-height: 16px;
+    overflow: visible;
+    text-indent: 2px;
+    white-space: nowrap;
+    border: none;
+    padding: 0 0 0 16px;
+    color: #ccc;
+}
+
+/* 버튼 아이콘 정의
+--------------------------------------------*/
+/* 도움 */
+.func span span.help { background: url("../img/button-icons.gif") no-repeat 0 -464px; }
+/* 닫기 */
+.func span span.close { background: url("../img/button-icons.gif") no-repeat 0 -304px; }
+/* 조회, Lot조회 */
+.func span span.search { background: url("../img/button-icons.gif") no-repeat top left; }
+/* 등록, 전표생성 */
+.func span span.regist { background: url("../img/button-icons.gif") no-repeat 0 -32px; }
+/* 수정 */
+.func span span.modify { background: url("../img/button-icons.gif") no-repeat 0 -48px; }
+/* 저장 */
+.func span span.save { background: url("../img/button-icons.gif") no-repeat 0 -96px; }
+/* 복사 */
+.func span span.copy { background: url("../img/button-icons.gif") no-repeat 0 -80px; }
+/* 삭제 */
+.func span span.delete { background: url("../img/button-icons.gif") no-repeat 0 -64px; }
+/* 지시편성, 편성 */
+.func span span.orderformation { background: url("../img/button-icons.gif") no-repeat 0 -240px; }
+/* HMI전송 */
+.func span span.hmi { background: url("../img/button-icons.gif") no-repeat 0 -240px; }
+/* ERP전송 */
+.func span span.erp-send { background: url("../img/button-icons.gif") no-repeat 0 -256px; }
+/* ERP취소 */
+.func span span.erp-cancel { background: url("../img/button-icons.gif") no-repeat 0 -272px; }
+/* Export */
+.func span span.export { background: url("../img/button-icons.gif") no-repeat 0 -112px; }
+/* 행지움 */
+.func span span.clear { background: url("../img/button-icons.gif") no-repeat 0 -224px; }
+/* 행추가 */
+.func span span.add-row { background: url("../img/button-icons.gif") no-repeat 0 -192px; }
+/* 확정, 선택, 확인 */
+.func span span.decision { background: url("../img/button-icons.gif") no-repeat 0 -432px; } /* 128 */
+/* 시험 */
+.func span span.analysis { background: url("../img/button-icons.gif") no-repeat 0 -320px; }
+
+/* 인쇄 */
+.func span span.print { background: url("../img/button-icons.gif") no-repeat 0 -288px; }
+/* 승인요청, 결재 */
+.func span span.confirm { background: url("../img/button-icons.gif") no-repeat 0 -128px; }
+/* 발행, 작업표발행, 자동배분 */
+.func span span.publish { background: url("../img/button-icons.gif") no-repeat 0 -400px; }
+/* 취소, 작업취소 */
+.func span span.cancelOrder { background: url("../img/button-icons.gif") no-repeat 0 -144px; }
+/* 입고 */
+.func span span.receive-items { background: url("../img/button-icons.gif") no-repeat 0 -336px; }
+/* 반품 */
+.func span span.return-items { background: url("../img/button-icons.gif") no-repeat 0 -352px; }
+/* 구매요청 */
+.func span span.transmit { background: url("../img/button-icons.gif") no-repeat 0 -416px; }
+/* 규격판정 */
+.func span span.judge { background: url("../img/button-icons.gif") no-repeat 0 -480px; }
+/* 특채 */
+.func span span.exchange { background: url("../img/button-icons.gif") no-repeat 0 -368px; }
+/* Lot편성 */
+.func span span.makelot { background: url("../img/button-icons.gif") no-repeat 0 -336px; }
+/* 편입 */
+.func span span.enrollot { background: url("../img/button-icons.gif") no-repeat 0 -336px; }
+/* 해제 */
+.func span span.removelot { background: url("../img/button-icons.gif") no-repeat 0 -352px; }
+
+/* 이메일 */
+.func span span.email { background: url("../img/button-icons.gif") no-repeat 0 -560px; }
+/* 이메일 작성 */
+.func span span.email-write { background: url("../img/button-icons.gif") no-repeat 0 -576px; }
+/* 이메일 전송 */
+.func span span.email-send { background: url("../img/button-icons.gif") no-repeat 0 -592px; }
+/* 이메일 수신 */
+.func span span.email-recive { background: url("../img/button-icons.gif") no-repeat 0 -608px; }
+
+
+/* cnbx 타이틀 : 컨텐트 영역 타이틀
+--------------------------------------------*/
+p.cntlt {
+    margin: 1em 0 0 0.5em;
+    font-weight: bold;
+}
+
+/* cnbx : 컨텐트 영역
+--------------------------------------------*/
+
+.cnbx {padding: 4px;}
+
+.cnbx .tltbar {
+    margin-bottom: 1px;
+    height: 24px;
+}
+.cnbx .tltbar .title {
+    display: inline-block;
+    float: left;
+    margin: 0 5px 0 0;
+    padding-right: 20px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+}
+
+.cnbx, .cnbody {
+    clear: both;
+}
+div.cnbody {padding-top: 3px;}
+
+/* ========================================================*/
+/*  Footer           */
+/*  하단 POSCO ICT    */
+/* ========================================================*/
+
+/* ========================================================*/
+/*  Common      */
+/*  일반적인 사용 */
+/* ========================================================*/
+/* text alignment */
+.tleft {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tcenter {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tright {
+    text-align: right;
+    vertical-align: middle;
+}
+
+/* 1px 점선 배경 */
+.dtln1 {
+    background: url(../img/sprite.png) repeat-x bottom;
+}
+/* 임시: 페이지 타이틀 행 출력안되게. 각 페이지에서 삭제해야한다. */
+.workspace .hdtlt .prgm {display: none;}
+.workspace .hdtlt .dtln1 {height: 0; background: none;}
+
+/* 1px 둥근 모서리. 선없음. */
+.r-outer {
+    display: block;
+    margin: 0 1px;
+    padding: 1px 0;
+}
+.r-inner {
+    display: block;
+    margin: 0 -1px;
+}
+
+.noborder {
+    border: 0 none !important;
+}
+
+/* 월선택
+--------------------------------------------*/
+.mpick {
+    width: 158px;
+    border: solid 1px #a4bed4;
+    background-color: #ffffff;
+}
+
+.mpick .head {
+    padding: 2px;
+}
+
+.mpick .head .btnprev {
+    font-size: 6pt;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.mpick .head .btnyear {
+    padding: 2px;
+    font-weight: bold;
+}
+
+.mpick .head .btnnext {
+    font-size: 6pt;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.mpick .body {
+    padding: 1px;
+}
+
+.mpick .body .btn {
+    width: 18px;
+    height: 18px;
+    margin: 1px;
+    padding: 2px;
+    line-height: 17px;
+    text-align: center;
+    border: dotted 1px transparent;
+}
+
+.mpick .body .btn:hover {
+    border: solid 1px #ffaf09;
+}
+
+.mpick .body .selected {
+    border: solid 1px #ffaf09 !important;
+    background-color: #ffe59e;
+    font-weight: bold;
+}
+
+/* Message box
+--------------------------------------------*/
+
+.phui-message {
+    display: none;
+    position: absolute;
+    left: 40%; top: 20px;
+    font-weight: bold;
+}
+.phui-message div.r-inner {
+    padding: 0 1em;
+}
+#phui-message-info div {
+    background-color: #adff2f;  /* yellowgreen */
+}
+#phui-message-warn div {
+    background-color: #ffa500;  /* orange */
+}
+#phui-message-warn a.detail-link {
+    text-decoration: underline; color: blue;
+    font-weight: normal;
+    margin-left: 1em;
+}
+.close-button {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    background: transparent url("../img/sprite-x.png") 0 -210px;
+    cursor: pointer;
+}
+#phui-message-warn .close-button {
+    margin-left: 1em;
+}
+
+/* 팝업, 폼
+--------------------------------------------*/
+table.inbox {
+    table-layout: fixed;
+    width: 100%;
+    empty-cells: show;
+    background-color: #ffffff;
+    border-top:  1px solid #8090a0;
+}
+
+table.inbox thead {
+    display: none;
+}
+
+table.inbox input {
+    border: 0;
+    width: 100%;
+}
+
+table.inbox td.label {
+    background: #9ec2f2;
+    height: 23px;
+    margin: 0;
+    padding: 0;
+    border: solid 1px #8090a0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.inbox td /* input box area */
+{
+    margin: 0;
+    padding: 0;
+    border: solid 1px #8090a0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table.inbox thead td.label {
+    height: 0;
+    width: 90px;
+}
+
+/* Monthly planner
+--------------------------------------------*/
+.mpbox {
+    width: 100%;
+    border: solid 1px #8090a0;
+    background-color: #ffffda;
+}
+
+.mpbox table {
+    table-layout: fixed;
+}
+
+.mpbox table.mpmonth {
+    height: 30px;
+}
+
+.mpbox table.mpmonth td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.mpbox table.mpmonth .cnavi {
+    width: 16px;
+}
+
+.mpbox table.mpmonth .btn {
+    position: relative;
+    height: 20px;
+    width: 16px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 6pt;
+    font-weight: bold;
+    line-height: 22px;
+    cursor: pointer;
+    border: solid 1px #ffffda;
+}
+
+.mpbox table.mpmonth .btn:hover {
+    /*
+    border-right:solid 1px #ffaf09;
+    border-bottom:solid 1px #ffaf09;
+    border-left:solid 1px #ffe59e;
+    border-top:solid 1px #ffe59e;
+    */
+    border: 0;
+    background-color: #ffff99;
+
+}
+
+.mpbox table.mpmonth .cyear {
+    width: 70px;
+}
+
+.mpbox table.mpmonth .yearLabel {
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.mpbox table.mpmonth .cmonth {
+    width: 50px;
+}
+
+.mpbox table.mpmonth .monthLabel {
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.mpbox table.mpweek tr {
+    background: url('../img/sky_blue_cell_label.png') repeat-x;
+}
+
+.mpbox table.mpweek tr td {
+    font-weight: bold;
+    text-align: center;
+    border: solid 1px white;
+}
+
+.mpbox table.mpweek tr td.saturday {
+    color: blue;
+}
+
+.mpbox table.mpweek tr td.sunday {
+    color: red;
+}
+
+.mpbox table.mpdays tbody tr td {
+/*
+    border-left: solid 1px #a4bed4;
+    border-top: solid 1px #a4bed4;
+*/
+    border:solid 1px #a4bed4;
+}
+/*
+.mpbox table.mpdays tbody tr td:first-child {
+    border-left: none !important;
+}
+*/
+.mpbox table.mpdays td.thismonth {
+}
+
+.mpbox table.mpdays td div.current {
+    font-weight: bold;
+    background: url('../img/today.png') no-repeat left top;
+}
+
+.mpbox table.mpdays td div.head {
+    background-color: #ffffbc;
+    text-align: right;
+}
+
+.mpbox table.mpdays td div.body {
+    overflow: hidden;
+}
+
+.mpbox table.mpdays td div.body .unit {
+    border-bottom: dotted 1px #aaaaaa;
+    text-align: center;
+}
+
+.mpbox table.mpdays td.saturday {
+    background-color: #e4e4ff;
+}
+
+.mpbox table.mpdays td.saturday div.head {
+    background-color: #d4d4ff;
+}
+
+.mpbox table.mpdays td.holiday {
+    background-color: #ffd7d7;
+}
+
+.mpbox table.mpdays td.holiday  div.head {
+    background-color: #fec8c8;
+}
+
+.mpbox table.mpdays td.thismonth .dayPan {
+    border: solid 1px transparent;
+    cursor: default;
+}
+
+.mpbox table.mpdays td.thismonth .dayPan:hover {
+    border: solid 1px #ffaf09;
+}
+
+.mpbox table.mpdays td.thismonth .selected {
+    border: solid 1px transparent !important;
+}
+
+.mpbox table.mpdays td.thismonth .selected div.head {
+    font-weight: bold;
+    background-color: #fec445;
+}
+
+.mpbox table.mpdays td.thismonth .selected div.body {
+    background-color: #ffe8b6;
+}
+
+.mpbox table.mpdays td.thismonth .saturday {
+    color: #0000ff;
+}
+
+.mpbox table.mpdays td.thismonth .holiday {
+    color: #ff0000;
+}
+
+.mpbox table.mpdays td.othermonth {
+    color: #999999;
+}
+
+.mpbox table.mpdays td.othermonth .dayPan {
+    border: solid 1px transparent;
+    cursor: default;
+}
+
+/*.mpbox table.mpdays td.othermonth .dayPan:hover { border:solid 1px #ffaf09; }*/
+.mpbox table.mpdays td.othermonth .saturday {
+    color: #6666ff;
+}
+
+.mpbox table.mpdays td.othermonth .holiday {
+    color: #ff6666;
+}
+
+.upp   { text-transform:uppercase;  }

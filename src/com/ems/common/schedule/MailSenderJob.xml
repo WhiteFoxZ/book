@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc=""> 
+
+	 <list_sql id="list_sql" desc="예약정보조회" >
+		 <![CDATA[ 
+SELECT max(USER_NAME) as USER_NAME , max(USER_TEL1) as USER_TEL1, GROUP_KEY ,count(GROUP_KEY) cnt 
+FROM reserve_info a where a.RESERVE_STATE='1' 
+and RESERVE_DATE between DATE_ADD(NOW(), INTERVAL -10 DAY) and DATE_ADD(NOW(), INTERVAL 10 DAY)
+and DATEDIFF( now(), LAST_UPDATE_TIMESTAMP) between 2 and 3 
+and LOGIN_ID=? group by GROUP_KEY
+		 ]]> 
+	 </list_sql>
+	 
+	 
+</queryMap>

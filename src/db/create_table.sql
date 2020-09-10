@@ -1,0 +1,96 @@
+
+## 중요!!!! 테이블스키마 생성시 인코딩 utf8/utf8
+## mysql 어드민을 생성
+##CREATE DATABASE book_user /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+## 대소문자 구분
+
+##어드민 root / 1234
+
+## BOOK_USER / BOOK_USER
+
+
+
+
+
+CREATE TABLE `book_code` (
+  `CD_GROUP_ID` varchar(150) NOT NULL,
+  `CD_GROUP_NM` varchar(45) NOT NULL,
+  `CD_ID` varchar(45) NOT NULL,
+  `CD_MEANING` varchar(150) NOT NULL,
+  `CREATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'C',
+  `CREATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `CREATED_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'C',
+  `CREATION_TIMESTAMP` datetime ,
+  `LAST_UPDATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'U',
+  `LAST_UPDATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_TIMESTAMP` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`CD_GROUP_ID`,`CD_ID`)
+) ;
+
+--
+-- Dumping data for table `book_code`
+--
+
+INSERT INTO `book_code` VALUES ('BOOK_1DAY_RATE','종일권','TEST','20000','m','mes','m','2015-05-22 13:31:32','m','MES','MES','2015-05-22 13:31:32'),('BOOK_BASE_RATE','기본요금','TEST','2500','m','mes','m','2015-05-22 13:29:42','m','MES','MES','2015-05-22 13:29:42'),('BOOK_MAX_RATE','최대요금','TEST','25000','m','mes','m','2015-05-22 13:31:27','m','MES','MES','2015-05-22 13:31:27');
+INSERT INTO `book_code` VALUES ('BOOK_1DAY_RATE','종일권','book1','20000','m','mes','m','2015-05-22 13:31:32','m','MES','MES','2015-05-22 13:31:32'),('BOOK_BASE_RATE','기본요금','book1','2500','m','mes','m','2015-05-22 13:29:42','m','MES','MES','2015-05-22 13:29:42'),('BOOK_MAX_RATE','최대요금','book1','25000','m','mes','m','2015-05-22 13:31:27','m','MES','MES','2015-05-22 13:31:27');
+
+-- Dump completed on 2015-05-22 13:50:54
+
+
+CREATE TABLE `book_user` (
+  `USERNAME` varchar(32) NOT NULL,
+  `TEL1` varchar(64) DEFAULT NULL,
+  `TEL2` varchar(64) DEFAULT NULL,
+  `LOGINID` varchar(10) NOT NULL DEFAULT '',
+  `LOGINPW` varchar(10) NOT NULL,
+  `EMAIL` varchar(128) DEFAULT NULL,
+  `STATUS` int(11) NOT NULL,
+  `CREATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'C',
+  `CREATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `CREATED_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'C',
+  `CREATION_TIMESTAMP` datetime ,
+  `LAST_UPDATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'U',
+  `LAST_UPDATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_TIMESTAMP` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`LOGINID`)
+)  DEFAULT CHARSET=utf8 COMMENT='사용자정보';
+
+-- Dumping data for table `book_user`
+--
+
+/*!40000 ALTER TABLE `book_user` DISABLE KEYS */;
+INSERT INTO `book_user` VALUES ('TEST 만화','010-3190-2461',NULL,'TEST','TEST','fmjj007@naver.com',1,'m','mes','m','2015-05-22 13:40:57','M','MES','MES','2015-05-22 13:40:57');
+INSERT INTO `book_user` VALUES ('못난이 만화','010-3190-2461',NULL,'book1','book1','fmjj007@naver.com',1,'m','mes','m','2015-05-22 13:40:57','M','MES','MES','2015-05-22 13:40:57');
+
+/*!40000 ALTER TABLE `book_user` ENABLE KEYS */;
+
+-- Dump completed on 2015-05-22 13:50:55
+
+
+
+
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book_sales` (
+  `BOOK_SALES_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TO_DAY` varchar(10) DEFAULT NULL,
+  `CARD_ID` varchar(20) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `WROK_PAY` int(11) DEFAULT NULL,
+  `WORK_HH` int(11) DEFAULT NULL,
+  `WORK_MIN` int(11) DEFAULT NULL,
+  `LOGINID` varchar(30) DEFAULT NULL,
+  `CREATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'C',
+  `CREATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `CREATED_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'C',
+  `CREATION_TIMESTAMP` datetime ,
+  `LAST_UPDATED_OBJECT_TYPE` varchar(1) NOT NULL DEFAULT 'U',
+  `LAST_UPDATED_OBJECT_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_PROGRAM_ID` varchar(22) NOT NULL DEFAULT 'MES',
+  `LAST_UPDATE_TIMESTAMP` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`BOOK_SALES_ID`)
+)  DEFAULT CHARSET=utf8 COMMENT='사용료계산';
+

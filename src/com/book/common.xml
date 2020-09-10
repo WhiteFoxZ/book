@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc=""> 
+
+	 <list_sql id="list_sql" desc="공통정보조회" >
+		 <![CDATA[ 
+		SELECT CD_GROUP_ID, CD_GROUP_NM, CD_ID, CD_MEANING FROM book_code WHERE CD_ID=?
+		 ]]> 
+	 </list_sql>
+	 	 	 
+	 <update_sql id="update_sql" desc="공통정보 수정" >
+		 <![CDATA[ 
+			UPDATE book_code SET 
+			CD_MEANING=?
+			WHERE CD_GROUP_ID=?
+			AND CD_ID=?
+			
+		 ]]> 
+	 </update_sql>
+
+</queryMap>
