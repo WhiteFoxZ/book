@@ -26,5 +26,5 @@ git rm --cached *.txt
 ## 폴더 라면 
 git rm --cached test/ -r
 
-git push - u origin master
+git push -u origin master
 

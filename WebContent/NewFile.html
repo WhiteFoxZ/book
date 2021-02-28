@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="revenue_unit_wrap">
+  <a id="aaa" href="http://naver.com" target="_blank" >http://naver.com</a>
+  </div>
+</body>
+
+
+  <script>
+  var cnt=0;
+  $(document).ready(function() {
+	 // setTimeout(function(){openAd();}, 2000);
+	 	browser.browserAction.onClicked.addListener(function() {
+	  var creating = browser.tabs.create({
+	    url:"https://example.org"
+	  });
+	  creating.then(onCreated, onError);
+	});
+	  console.log("?? ??");
+	//https://www.python2.net/questions-304136.htm
+  });
+  function openAd(){
+	  if($("div.revenue_unit_wrap").length){
+		  var adv = $("div.revenue_unit_wrap");
+		  var elements;
+		for(i=0; i<adv.length; i++){
+			elements = $(adv[i]).find('a');
+			elements.each(function(){
+				$(this).get(0).click();
+				window.parent.focus();
+					console.log( $(this).attr("href") );
+					/*
+					location.href = $(this).attr("href") ;
+					console.log( document.referrer );
+					window.history.back();
+					console.log( document.referrer );
+					history.back();
+					console.log( document.referrer );
+					histroy.go(-1);
+					*/
+				}
+			);
+			//adv[i].click();
+		}
+	  }else{
+		  if(cnt<100){
+			console.log("????"+cnt);
+		  	//setTimeout(openAd(), 50000);
+		  	cnt++;
+		  }
+	  }
+  }
+  function onCreated(tab) {
+	  console.log(`Created new tab: ${tab.id}`)
+	}
+	function onError(error) {
+	  console.log(`Error: ${error}`);
+	}
+  </script>
+
+</html>
