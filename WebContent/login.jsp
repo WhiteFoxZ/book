@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <%@ page  pageEncoding="UTF-8"%>
-    
+
 <%@ include file="include.jsp" %>
 
 <%
@@ -13,17 +13,17 @@ String pw="";
 
 if(cookies!=null && cookies.length>0){
 for(int i=0; i<cookies.length; i++){
-	
+
 	cookieName = cookies[i].getName();
-	
+
 	if(cookieName.equals("LOGINID")){
 		id = cookies[i].getValue();
 	}
-	
+
 	if(cookieName.equals("LOGINPW")){
 		pw = cookies[i].getValue();
 	}
-	
+
 }
 }
 
@@ -35,7 +35,7 @@ for(int i=0; i<cookies.length; i++){
 <title>만화방로그인</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="https://www.freepik.com/favicon.ico">	
+	<link rel="shortcut icon" href="https://www.freepik.com/favicon.ico">
 	<link rel="stylesheet" href="css/login.css" />
 <style>
 
@@ -45,31 +45,31 @@ for(int i=0; i<cookies.length; i++){
 
 
 onlyOneHit = false
-function nextSubmit() { 
-	setTimeout("onlyOneHit = false", 5000); 
+function nextSubmit() {
+	setTimeout("onlyOneHit = false", 5000);
 }
 
 
 //연속클릭방지
 function checkDoubleClick(){
-	
+
 	console.log(' onSubmit ');
-	
-	if( !onlyOneHit ) { 
+
+	if( !onlyOneHit ) {
 		console.log(' you are double click');
 		onlyOneHit = true
 		nextSubmit();
 		return true;
 	}
 	return false
-	
+
 }
 
 
 
     function sendData()
     {
-    	    	
+
      var f = document.frmMain;
      if(f.id.value == "")
      {
@@ -97,11 +97,11 @@ function checkDoubleClick(){
       f.pw.select();
       return false;
      }
-     
+
      f.submit();
     }
   </SCRIPT>
-  
+
 </head>
 
 <body class="freepik bg-login logofreepik" onload="document.frmMain.id.focus();">
@@ -118,29 +118,29 @@ function checkDoubleClick(){
 <form name="frmMain" method=post action="loginAction.jsp" onSubmit="return checkDoubleClick()" target="_self">
 <span >
 				<label for="gr_login_username">ID</label>
-				<input type="text" name="id" id="gr_login_username" value="<%=id %>" tabindex="1" autofocus />
-				
-				
+				<input type="text" name="id" id="gr_login_username" value="<%=id %>" tabindex="1" placeholder="TEST" autofocus />
+
+
 			</span>
-			
+
 <span >
 				<label for="gr_login_password">Password</label>
-				<input type="password" name="pw" id="gr_login_password" value="<%=pw %>" tabindex="2"  />
-				
+				<input type="password" name="pw" id="gr_login_password" value="<%=pw %>" tabindex="2"  placeholder="TEST" />
+
 			</span>
-			
+
 <span >
 				<label for="gr_login_rememberme" class="text">Keep me signed in</label>
 				<input type="checkbox" name="remember" id="gr_login_rememberme"  <%=pw.equals("")?"":"checked" %> />
 				<label for="gr_login_rememberme" class="fake-checkbox"></label>
-			</span>			
-						
+			</span>
+
 	<button class="btn fullwidth spinner_button" id="signin_button" tabindex="3" onclick="sendData();">Login</button>
 </form>
-	
+
 </div>
 </section>
-	
+
 </body>
 
 </html>
