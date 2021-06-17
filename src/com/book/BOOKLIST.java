@@ -1,22 +1,27 @@
 ﻿package com.book;
 
-import com.ems.common.util.*;
+import java.sql.Connection;
+import java.util.HashMap;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+
+import org.apache.log4j.Logger;
+
 import com.ems.common.dbcp.DBManager;
 import com.ems.common.dbcp.DataSource;
-
-import java.util.*;
-import java.sql.*;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletContext;;
+import com.ems.common.util.EmsDateUtil;
+import com.ems.common.util.EmsHashtable;
+import com.ems.common.util.QueryXMLParser;;
 
 
 public class BOOKLIST {
 
-	ServletRequest request = null;	
-	
-	private org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger( this.getClass() );
-	 
-	
+	ServletRequest request = null;
+
+	private static Logger log = Logger.getLogger(BOOKLIST.class.getName());
+
+
 	static HashMap<String, String> map1 = new HashMap();
 	EmsHashtable userinfo=null;
 
@@ -26,15 +31,15 @@ public class BOOKLIST {
 	public BOOKLIST(ServletContext application, ServletRequest request, EmsHashtable userinfo ) {
 		this.request = request;
 		this.userinfo = userinfo;
-		
+
 		ds = (DataSource)application.getAttribute("jdbc/mysql_book");
-		
+
 		dbm = new DBManager(ds);
-		
-		
+
+
 		// P_CARD_ID 100 이상 일때 종일권으로 계산
 		// P_CARD_ID 200 이상 일때 (과자값으로 세팅)
-		
+
 		map1.put("200", "700"); // 700원
 		map1.put("201", "800");
 		map1.put("202", "900");
@@ -59,7 +64,7 @@ public class BOOKLIST {
 		map1.put("221", "2800");
 		map1.put("222", "2900");
 		map1.put("223", "3000");
-		
+
 		list();
 
 	}
@@ -70,7 +75,7 @@ public class BOOKLIST {
 		 * 종료일자가 저녁12시가 넘었을때 계산안되는문제
 		 */
 
-		String P_CARD_ID = request.getParameter("P_CARD_ID"); // 카드ID		
+		String P_CARD_ID = request.getParameter("P_CARD_ID"); // 카드ID
 		String BOOK_SALES_ID = "";
 		String TO_DAY = EmsDateUtil.getCurrentDate("yyyy-MM-dd");
 		String CARD_ID = "";
@@ -81,25 +86,25 @@ public class BOOKLIST {
 		String WORK_MIN = "";
 		String MSG = "";
 		String audio = "";
-		
-		String LOGINID = userinfo.getString("LOGINID");
-		
-		Connection con =null;
-		
 
-		try {			
- 
+		String LOGINID = userinfo.getString("LOGINID");
+
+		Connection con =null;
+
+
+		try {
+
 			con = dbm.getConnection();
-			
+
 			EmsHashtable[] hash = dbm.selectMultipleRecord(con,"select * from book_sales where card_id=? and LOGINID=? and START_TIME is not null and END_TIME IS NULL AND CARD_ID<200 ",
 					new String[] { P_CARD_ID, LOGINID });
 			// 현재날짜, 카드ID, END_TIME IS NULL 로 데이타 가 있는지 조회해서 데이타가 있으면 들어오셨습니다 메시지를 뿌린다.
-			
-			
+
+
 			if (hash != null && hash.length > 0) {	// 손님나갈때 처리
 
 				BOOK_SALES_ID = hash[0].getString("BOOK_SALES_ID");
-				
+
 				dbm.update(con, "UPDATE book_sales set END_TIME = NOW()  where BOOK_SALES_ID =? ", new String[] {	BOOK_SALES_ID });
 
 				hash = dbm.selectMultipleRecord(con, QueryXMLParser.getQuery(
@@ -147,7 +152,7 @@ public class BOOKLIST {
 
 					//hash = dbm.selectMultipleRecord("select to_char(sysdate,'YYYY/MM/DD AMHH:MI') as NOW  from dual ",new String[] {});
 					hash = dbm.selectMultipleRecord(con,"select DATE_FORMAT(NOW(),'%p %h:%i') as NOW",new String[] {});
-					
+
 					CARD_ID = P_CARD_ID;
 					START_TIME = hash[0].getString("NOW");
 
@@ -155,8 +160,8 @@ public class BOOKLIST {
 					int intCardId = Integer.parseInt(P_CARD_ID);
 
 					if (intCardId >= 100 && intCardId < 200) {// 종일권 계산
-						
-						q2.append("insert into book_sales (TO_DAY,CARD_ID,START_TIME,WROK_PAY, LOGINID) values (?,?,CURRENT_TIMESTAMP, (SELECT CD_MEANING FROM book_code where CD_GROUP_ID='BOOK_1DAY_RATE' and cd_id=?) ,? ) ");	
+
+						q2.append("insert into book_sales (TO_DAY,CARD_ID,START_TIME,WROK_PAY, LOGINID) values (?,?,CURRENT_TIMESTAMP, (SELECT CD_MEANING FROM book_code where CD_GROUP_ID='BOOK_1DAY_RATE' and cd_id=?) ,? ) ");
 
 						dbm.insert(con, q2.toString(), new String[] { TO_DAY,P_CARD_ID, LOGINID , LOGINID });
 
@@ -182,12 +187,12 @@ public class BOOKLIST {
 						audio = "welcome.mp3";
 					}
 
-					
+
 
 				}
 
 			}
-			
+
 			dbm.commitChange(con);
 
 			request.setAttribute("TO_DAY", TO_DAY);
@@ -200,7 +205,7 @@ public class BOOKLIST {
 			request.setAttribute("WORK_MIN", WORK_MIN);
 			request.setAttribute("MSG", MSG);
 			request.setAttribute("audio", audio);
-			
+
 
 			hash = dbm.selectMultipleRecord(QueryXMLParser.getQuery(this.getClass(), "book.xml", "query5"),new String[] {LOGINID});
 

@@ -3,74 +3,74 @@
 import java.net.URL;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 /**
  * Properties file 정보를 읽어서 DataSource 를 생성해주는 메니저
+ *
  * @author LEESR
  *
  */
 public class DBCPManager {
 
-	private org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger( this.getClass() );
+	private static Logger log = Logger.getLogger(DBCPManager.class.getName());
 
-    private DataSource ds=null;
+	private DataSource ds = null;
 
-    private Properties pro=null;
+	private Properties pro = null;
 
-    private static DBCPManager dm=null;
+	private static DBCPManager dm = null;
 
-    public static DBCPManager getInstance(String fileName){
+	public static DBCPManager getInstance(String fileName) {
 
-    	if(dm==null){
+		if (dm == null) {
 
-    		System.out.println("------------------------------>"+fileName);
-    		dm = new DBCPManager(fileName);
-    	}
-    	return dm;
+			System.out.println("------------------------------>" + fileName);
+			dm = new DBCPManager(fileName);
+		}
+		return dm;
 
-    }
+	}
 
-    public DBCPManager(String fileName) {
+	public DBCPManager(String fileName) {
 
-    	ds = new DataSource();
+		ds = new DataSource();
 
-        pro = new Properties();
+		pro = new Properties();
 
-        log.debug(fileName + " init ");
+		log.debug(fileName + " init ");
 
-        URL url = null;
+		URL url = null;
 
+		try {
 
-        try {
+			pro.load(DBCPManager.class.getResourceAsStream(fileName));
 
+			log.debug("pro ===== " + pro);
 
-        	pro.load(DBCPManager.class.getResourceAsStream(fileName));
+			ds.setDefaultAutoCommit(false);
+			ds.setDefaultReadOnly(false);
 
-        	log.debug("pro ===== "+pro);
+			ds.setDriverClassName(pro.getProperty("driverClassName"));
+			ds.setMaxActive(Integer.parseInt(pro.getProperty("maxActive")));
+			ds.setMaxIdle(Integer.parseInt(pro.getProperty("maxIdle")));
+			ds.setMaxWait(Integer.parseInt(pro.getProperty("maxWait")));
 
-            ds.setDefaultAutoCommit(false);
-            ds.setDefaultReadOnly(false);
+			ds.setUrl(pro.getProperty("url"));
+			ds.setUsername(pro.getProperty("username"));
+			ds.setPassword(pro.getProperty("password"));
 
-            ds.setDriverClassName(pro.getProperty("driverClassName"));
-            ds.setMaxActive(Integer.parseInt(pro.getProperty("maxActive")));
-            ds.setMaxIdle(Integer.parseInt(pro.getProperty("maxIdle")));
-            ds.setMaxWait(Integer.parseInt(pro.getProperty("maxWait")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("getNumActive " + ds.getNumActive() + " getNumIdle " + ds.getNumIdle());
+		}
+	}
 
-            ds.setUrl(pro.getProperty("url"));
-            ds.setUsername(pro.getProperty("username"));
-            ds.setPassword(pro.getProperty("password"));
+	public String getDataSourceName() {
+		return pro.getProperty("sourceName");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("getNumActive " + ds.getNumActive() +
-                               " getNumIdle " + ds.getNumIdle());
-        }
-    }
-
-    public String getDataSourceName(){
-    	return pro.getProperty("sourceName");
-
-    }
+	}
 
 	public com.ems.common.dbcp.DataSource getDatasource() {
 		// TODO Auto-generated method stub
@@ -80,12 +80,8 @@ public class DBCPManager {
 		return (com.ems.common.dbcp.DataSource) ds;
 	}
 
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
-
-
-    }
+	}
 
 }
-
-
